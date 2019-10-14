@@ -119,7 +119,7 @@ class NavigationApps extends Component {
     handleNavApp = async (navApp) => {
 
 
-        const {address} = this.props;
+        const {address, onPress} = this.props;
         const {navApps} = this.state;
         const navAppItem = navApps[navApp];
         const {storeUri, appDeepLinkUri} = navApp;
@@ -130,7 +130,7 @@ class NavigationApps extends Component {
         const lon = navAppItem.lon ? navAppItem.lon : '';
         const travelMode = navAppItem.travelMode ? navAppItem.travelMode : '';
         const navAppUri = navAppItem[navAppItem.action]({addressToNavigate, lat, lon, travelMode});
-
+        onPress && onPress();
         try {
             const supported = await Linking.canOpenURL(navAppItem.appDeepLinkUri);
             if (!supported) {
