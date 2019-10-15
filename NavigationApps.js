@@ -94,22 +94,7 @@ class NavigationApps extends Component {
                     }),
                     ...googleMaps,
                     ...props.googleMaps
-                },
-                ...Platform.select({
-                    ios: {
-                        'maps': {
-                            ...maps,
-                            ...props.maps,
-                            appDeepLinkUri: 'maps://app',
-                            appDeepLinkUriToUse: 'maps://app?',
-                            navigateByAddress: ({addressToNavigate, travelMode}) => encodeURI(this.state.navApps.maps.appDeepLinkUriToUse + `daddr=${addressToNavigate}&dirflg=${travelMode}`),
-                            navigateByLatAndLon: ({addressToNavigate, travelMode, lat, lon}) => encodeURI(this.state.navApps.maps.appDeepLinkUriToUse + `daddr=${addressToNavigate}&dirflg=${travelMode}&ll=${llatan},${lon}`),
-                            searchLocationByLatAndLon: ({lat, lon}) => encodeURI(this.state.navApps.maps.appDeepLinkUriToUse + `ll=${lat},${lon}`)
-
-                        },
-
-                    }
-                })
+                }
             },
             modalVisible: false,
         };
