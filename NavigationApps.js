@@ -36,16 +36,7 @@ const googleMaps = {
     travelMode: googleMapsTravelModes.driving,
     action: actions.navigateByAddress
 };
-const maps = {
-    title: 'maps',
-    icon: mapsIcon,
-    address: '',
-    lat: '',
-    lon: '',
-    travelMode: mapsTravelModes.driving,
-    action: actions.navigateByAddress,
 
-};
 
 class NavigationApps extends Component {
 
@@ -119,7 +110,7 @@ class NavigationApps extends Component {
         try {
             const supported = await Linking.canOpenURL(navAppItem.appDeepLinkUri);
             if (!supported) {
-                return await Linking.openURL(storeUri);
+                return await Linking.openURL(navAppItem.storeUri);
             } else {
                 return await Linking.openURL(navAppUri);
             }
@@ -349,8 +340,7 @@ NavigationApps.propTypes = {
     actionSheetBtnOpenStyle: ViewPropTypes.style,
     actionSheetBtnOpenTextStyle: Text.propTypes.style,
     waze:PropTypes.object,
-    googleMaps:PropTypes.object,
-    maps:PropTypes.object
+    googleMaps:PropTypes.object
 
 };
 
